@@ -14,7 +14,7 @@ import java.util.List;
  * Created by kakaroto on 12/21/16.
  */
 
-public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> dataset;
 
@@ -34,7 +34,7 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
         }
     }
 
-    public AdapterMovie (List<Movie> dataset){
+    public MovieAdapter(List<Movie> dataset){
         this.dataset = dataset;
     }
 
