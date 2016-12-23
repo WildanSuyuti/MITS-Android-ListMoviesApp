@@ -1,0 +1,46 @@
+package com.mits.kakaroto.listmovieapp;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+
+public class DetailMovieActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_movie);
+
+        TextView showAuthor = (TextView) findViewById(R.id.tv_showAuthor);
+        TextView showGenre = (TextView) findViewById(R.id.tv_showGenre);
+        TextView showYear = (TextView) findViewById(R.id.tv_showYear);
+        TextView showCountry = (TextView) findViewById(R.id.tv_showCountry);
+        TextView showDuration = (TextView) findViewById(R.id.tv_showDuration);
+        ImageView showImage = (ImageView) findViewById(R.id.img_showImage);
+
+        Movie movie = getIntent().getParcelableExtra("movie");
+        showAuthor.setText(movie.getAuthor());
+        showGenre.setText(movie.getGenre());
+        showYear.setText(movie.getYear());
+        showCountry.setText(movie.getCountry());
+        showDuration.setText(movie.getDuration());
+        showImage.setImageResource(movie.getImageAddrees());
+
+    }
+
+    public void submitRemove(View view){
+        final int RESULT_REMOVE=3;
+        Intent returnIntent = new Intent();
+        setResult(RESULT_REMOVE, returnIntent);
+        finish();
+    }
+
+    public void submitCancel(View view) {
+        finish();
+    }
+
+}

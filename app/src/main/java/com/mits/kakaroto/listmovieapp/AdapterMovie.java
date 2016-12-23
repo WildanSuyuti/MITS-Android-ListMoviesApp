@@ -61,4 +61,24 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
     public int getItemCount() {
         return dataset.size();
     }
+
+    public Movie getItem(int position) {
+        return dataset.get(position);
+    }
+
+    public void insert(Movie newMovie) {
+        dataset.add(0, newMovie);
+        notifyItemInserted(0);
+    }
+
+    public void remove(int position){
+        dataset.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void update(int position, Movie updateMovie){
+        dataset.remove(position);
+        dataset.add(position, updateMovie);
+    }
+
 }
