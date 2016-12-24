@@ -3,6 +3,7 @@ package com.mits.kakaroto.listmovieapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,12 +15,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private AdapterMovie adapter;
+    private MovieAdapter adapter;
     private RecyclerView recyclerView;
     private Intent intent;
     //private final int REQUEST_CODE = 1;
-    private final int RESULT_ADD = 2;
-    private final int RESULT_REMOVE = 3;
+    public static final int RESULT_ADD = 2;
+    public static final int RESULT_REMOVE = 3;
     private int id;
 
     @Override
@@ -47,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Movie("Baked in Brooklyn", "Comedy", "2016", "USA", "1:40:32", R.drawable.comedy_baked_in_brooklyn));
         list.add(new Movie("At Cafe 6", "Comedy", "2016", "Taiwan", "1:43:20", R.drawable.comedy_at_cafe_6));
 
-        adapter = new AdapterMovie(list);
+        adapter = new MovieAdapter(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView,
                 new RecyclerTouchListener.ClickListener() {
                     @Override
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         id=position;
                         intent = new Intent(MainActivity.this, DetailMovieActivity.class);
                         intent.putExtra("position", position);
-                        intent.putExtra("movie", new Movie(movie.getAuthor(), movie.getGenre(),
+                        intent.putExtra("movie", new Movie(movie.getTitle(), movie.getGenre(),
                                 movie.getYear(), movie.getCountry(), movie.getDuration(),
                                 movie.getImageAddrees()));
                         startActivityForResult(intent, RESULT_REMOVE);

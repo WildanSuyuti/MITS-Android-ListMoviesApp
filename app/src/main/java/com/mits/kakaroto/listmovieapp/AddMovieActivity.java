@@ -8,14 +8,14 @@ import android.widget.EditText;
 
 public class AddMovieActivity extends AppCompatActivity {
 
-    private EditText etAuthor, etGenre, etYear, etCountry, etDuration;
+    private EditText etTitle, etGenre, etYear, etCountry, etDuration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_movie);
 
-        etAuthor = (EditText) findViewById(R.id.et_author);
+        etTitle = (EditText) findViewById(R.id.et_title);
         etGenre = (EditText) findViewById(R.id.et_genre);
         etYear = (EditText) findViewById(R.id.et_year);
         etCountry = (EditText) findViewById(R.id.et_country);
@@ -24,19 +24,18 @@ public class AddMovieActivity extends AppCompatActivity {
     }
 
     public void submitSave(View view) {
-        final int RESULT_ADD=2;
-        String author,genre,year,country,duration;
+        String title,genre,year,country,duration;
         int image = R.drawable.anime_dragon_ball_resurrection_f;
 
-        author = etAuthor.getText().toString();
+        title = etTitle.getText().toString();
         genre = etGenre.getText().toString();
         year = etYear.getText().toString();
         country = etCountry.getText().toString();
         duration = etDuration.getText().toString();
 
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("data", new Movie(author,genre,year,country,duration,image));
-        setResult(RESULT_ADD, returnIntent);
+        returnIntent.putExtra("data", new Movie(title,genre,year,country,duration,image));
+        setResult(MainActivity.RESULT_ADD, returnIntent);
         finish();
     }
 

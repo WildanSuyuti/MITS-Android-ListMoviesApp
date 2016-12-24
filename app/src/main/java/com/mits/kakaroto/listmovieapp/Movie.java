@@ -8,12 +8,12 @@ import android.os.Parcelable;
  */
 
 public class Movie implements Parcelable {
-    private String author,genre,year,country,duration;
+    private String title,genre,year,country,duration;
     private int imageAddrees;
 
 
-    public Movie(String author, String genre, String year, String country, String duration, int imageAddres) {
-        this.author = author;
+    public Movie(String title, String genre, String year, String country, String duration, int imageAddres) {
+        this.title = title;
         this.genre = genre;
         this.year = year;
         this.country = country;
@@ -21,12 +21,12 @@ public class Movie implements Parcelable {
         this.imageAddrees = imageAddres;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getTitle() {
+        return title;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getGenre() {
@@ -76,7 +76,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.author);
+        dest.writeString(this.title);
         dest.writeString(this.genre);
         dest.writeString(this.year);
         dest.writeString(this.country);
@@ -85,7 +85,7 @@ public class Movie implements Parcelable {
     }
 
     protected Movie(Parcel in) {
-        this.author = in.readString();
+        this.title = in.readString();
         this.genre = in.readString();
         this.year = in.readString();
         this.country = in.readString();

@@ -15,7 +15,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
 
-        TextView showAuthor = (TextView) findViewById(R.id.tv_showAuthor);
+        TextView showTitle = (TextView) findViewById(R.id.tv_showTitle);
         TextView showGenre = (TextView) findViewById(R.id.tv_showGenre);
         TextView showYear = (TextView) findViewById(R.id.tv_showYear);
         TextView showCountry = (TextView) findViewById(R.id.tv_showCountry);
@@ -23,7 +23,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         ImageView showImage = (ImageView) findViewById(R.id.img_showImage);
 
         Movie movie = getIntent().getParcelableExtra("movie");
-        showAuthor.setText(movie.getAuthor());
+        showTitle.setText(movie.getTitle());
         showGenre.setText(movie.getGenre());
         showYear.setText(movie.getYear());
         showCountry.setText(movie.getCountry());
@@ -33,9 +33,8 @@ public class DetailMovieActivity extends AppCompatActivity {
     }
 
     public void submitRemove(View view){
-        final int RESULT_REMOVE=3;
         Intent returnIntent = new Intent();
-        setResult(RESULT_REMOVE, returnIntent);
+        setResult(MainActivity.RESULT_REMOVE, returnIntent);
         finish();
     }
 

@@ -14,18 +14,18 @@ import java.util.List;
  * Created by kakaroto on 12/21/16.
  */
 
-public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> dataset;
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView author, year, genre, country, duration;
+        TextView title, year, genre, country, duration;
         ImageView image;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            author = (TextView) itemView.findViewById(R.id.tv_author);
+            title = (TextView) itemView.findViewById(R.id.tv_title);
             genre = (TextView) itemView.findViewById(R.id.tv_genre);
             year = (TextView) itemView.findViewById(R.id.tv_year);
             country = (TextView) itemView.findViewById(R.id.tv_country);
@@ -34,7 +34,7 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
         }
     }
 
-    public AdapterMovie (List<Movie> dataset){
+    public MovieAdapter(List<Movie> dataset){
         this.dataset = dataset;
     }
 
@@ -49,7 +49,7 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = dataset.get(position);
 
-        holder.author.setText(movie.getAuthor());
+        holder.title.setText(movie.getTitle());
         holder.genre.setText(movie.getGenre());
         holder.year.setText(movie.getYear());
         holder.country.setText(movie.getCountry());
@@ -71,14 +71,9 @@ public class AdapterMovie extends RecyclerView.Adapter<AdapterMovie.MyViewHolder
         notifyItemInserted(0);
     }
 
-    public void remove(int position){
+     public void remove(int position){
         dataset.remove(position);
         notifyItemRemoved(position);
-    }
-
-    public void update(int position, Movie updateMovie){
-        dataset.remove(position);
-        dataset.add(position, updateMovie);
     }
 
 }
