@@ -1,4 +1,4 @@
-package me.didik.activityresultsample;
+package com.mits.kakaroto.listmovieapp;
 
 import android.content.Context;
 import android.graphics.Rect;

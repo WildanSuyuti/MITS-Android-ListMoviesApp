@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MovieAdapter(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView,
                 new RecyclerTouchListener.ClickListener() {
                     @Override
