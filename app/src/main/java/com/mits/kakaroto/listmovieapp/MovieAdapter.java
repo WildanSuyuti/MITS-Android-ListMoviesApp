@@ -8,6 +8,9 @@ import android.widget.TextView;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
+import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.util.ColorGenerator;
+
 import java.util.List;
 
 /**
@@ -49,12 +52,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Movie movie = dataset.get(position);
 
-        holder.title.setText(movie.getTitle());
+        String titile = movie.getTitle();
+
+        holder.title.setText(titile);
         holder.genre.setText(movie.getGenre());
         holder.year.setText(movie.getYear());
         holder.country.setText(movie.getCountry());
         holder.duration.setText(movie.getDuration());
-        holder.image.setImageResource(movie.getImageAddrees());
+
+
+        ColorGenerator generator = ColorGenerator.MATERIAL;
+        String firstChar = String.valueOf(titile.charAt(0));
+        TextDrawable drawable = TextDrawable.builder().buildRound(firstChar, generator.getRandomColor());
+        holder.image.setImageDrawable(drawable);
     }
 
     @Override
