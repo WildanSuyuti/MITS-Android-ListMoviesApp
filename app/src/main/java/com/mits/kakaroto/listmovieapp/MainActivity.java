@@ -35,14 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void initSpinner(){
         List<String> listMovieGenre = new ArrayList<>();
-        listMovieGenre.add("Action");
-        listMovieGenre.add("Anime");
-        listMovieGenre.add("Comedy");
+        listMovieGenre.add("Like Gmail");
+        listMovieGenre.add("Card View Type + Swipe to Remove");
+        listMovieGenre.add("Horizontal");
+        listMovieGenre.add("Grid");
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 listMovieGenre);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMovie.setAdapter(adapter);
+
     }
 
     public void submitSearch(View view){
