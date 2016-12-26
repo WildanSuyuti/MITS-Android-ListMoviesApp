@@ -14,7 +14,7 @@ import java.util.List;
  * Created by kakaroto on 12/21/16.
  */
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
+public class MovieHorizontalAdapter extends RecyclerView.Adapter<MovieHorizontalAdapter.MyViewHolder> {
 
     private List<Movie> dataset;
 
@@ -34,14 +34,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         }
     }
 
-    public MovieAdapter(List<Movie> dataset){
+    public MovieHorizontalAdapter(List<Movie> dataset){
         this.dataset = dataset;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_movie, parent, false);
+                .inflate(R.layout.row_horizontal_movie, parent, false);
         return new MyViewHolder(view);
     }
 

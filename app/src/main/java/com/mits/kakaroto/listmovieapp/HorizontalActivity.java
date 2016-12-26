@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,10 +12,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class HorizontalActivity extends AppCompatActivity {
 
 
-    private MovieAdapter adapter;
+    private MovieHorizontalAdapter adapter;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager horizontal;
     private Context horizontalContext;
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Movie("Baked in Brooklyn", "Comedy", "2016", "USA", "1:40:32", R.drawable.comedy_baked_in_brooklyn));
         list.add(new Movie("At Cafe 6", "Comedy", "2016", "Taiwan", "1:43:20", R.drawable.comedy_at_cafe_6));
 
-        adapter = new MovieAdapter(list);
+        adapter = new MovieHorizontalAdapter(list);
 
         horizontal = new LinearLayoutManager(horizontalContext, LinearLayoutManager.HORIZONTAL, false);
 
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view, int position) {
                         Movie movie = adapter.getItem(position);
                         id=position;
-                        intent = new Intent(MainActivity.this, DetailMovieActivity.class);
+                        intent = new Intent(HorizontalActivity.this, DetailMovieActivity.class);
                         intent.putExtra("position", position);
                         intent.putExtra("movie", new Movie(movie.getTitle(), movie.getGenre(),
                                 movie.getYear(), movie.getCountry(), movie.getDuration(),
