@@ -35,7 +35,7 @@ public class AddMovieActivity extends AppCompatActivity {
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra("data", new Movie(title,genre,year,country,duration,image));
-        setResult(MainActivity.RESULT_ADD, returnIntent);
+        setResult(ViewGmailActivity.RESULT_ADD, returnIntent);
         finish();
     }
 

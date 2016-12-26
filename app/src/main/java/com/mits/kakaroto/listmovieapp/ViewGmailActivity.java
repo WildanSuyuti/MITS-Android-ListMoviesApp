@@ -12,10 +12,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ViewGmailActivity extends AppCompatActivity {
 
 
-    private MovieAdapter adapter;
+    private MovieViewGmailAdapter adapter;
     private RecyclerView recyclerView;
     private Intent intent;
     //private final int REQUEST_CODE = 1;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Movie("Baked in Brooklyn", "Comedy", "2016", "USA", "1:40:32", R.drawable.comedy_baked_in_brooklyn));
         list.add(new Movie("At Cafe 6", "Comedy", "2016", "Taiwan", "1:43:20", R.drawable.comedy_at_cafe_6));
 
-        adapter = new MovieAdapter(list);
+        adapter = new MovieViewGmailAdapter(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view, int position) {
                         Movie movie = adapter.getItem(position);
                         id=position;
-                        intent = new Intent(MainActivity.this, DetailMovieActivity.class);
+                        intent = new Intent(ViewGmailActivity.this, DetailMovieActivity.class);
                         intent.putExtra("position", position);
                         intent.putExtra("movie", new Movie(movie.getTitle(), movie.getGenre(),
                                 movie.getYear(), movie.getCountry(), movie.getDuration(),
