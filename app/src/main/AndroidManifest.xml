@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 =======
         <activity android:name=".CardViewActivity">
@@ -17,6 +18,9 @@
 =======
         <activity android:name=".GridViewActivity">
 >>>>>>> gridview
+=======
+        <activity android:name=".HorizontalActivity">
+>>>>>>> horizontal_view
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +34,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 android:value=".MainActivity"></meta-data>
 =======
                 android:value=".GridViewActivity"></meta-data>
@@ -38,6 +43,9 @@
         <activity android:name=".ResultActivity"></activity>
 =======
                 android:value=".CardViewActivity"></meta-data>
+=======
+                android:value=".HorizontalActivity"></meta-data>
+>>>>>>> horizontal_view
         </activity>
         <activity android:name=".AddMovieActivity"></activity>
 >>>>>>> cardview

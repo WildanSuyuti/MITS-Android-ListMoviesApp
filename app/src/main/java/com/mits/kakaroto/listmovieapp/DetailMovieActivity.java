@@ -35,10 +35,14 @@ public class DetailMovieActivity extends AppCompatActivity {
     public void submitRemove(View view){
         Intent returnIntent = new Intent();
 <<<<<<< HEAD
+<<<<<<< HEAD
         setResult(CardViewActivity.RESULT_REMOVE, returnIntent);
 =======
         setResult(GridViewActivity.RESULT_REMOVE, returnIntent);
 >>>>>>> gridview
+=======
+        setResult(HorizontalActivity.RESULT_REMOVE, returnIntent);
+>>>>>>> horizontal_view
         finish();
     }
 

@@ -36,10 +36,14 @@ public class AddMovieActivity extends AppCompatActivity {
         Intent returnIntent = new Intent();
         returnIntent.putExtra("data", new Movie(title,genre,year,country,duration,image));
 <<<<<<< HEAD
+<<<<<<< HEAD
         setResult(CardViewActivity.RESULT_ADD, returnIntent);
 =======
         setResult(GridViewActivity.RESULT_ADD, returnIntent);
 >>>>>>> gridview
+=======
+        setResult(HorizontalActivity.RESULT_ADD, returnIntent);
+>>>>>>> horizontal_view
         finish();
     }
 
