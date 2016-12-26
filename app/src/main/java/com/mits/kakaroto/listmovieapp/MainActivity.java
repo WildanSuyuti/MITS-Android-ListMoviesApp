@@ -19,8 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     private MovieAdapter adapter;
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager horizontal;
-    private Context horizontalContext;
 
     private Intent intent;
     //private final int REQUEST_CODE = 1;
@@ -55,10 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MovieAdapter(list);
 
-        horizontal = new LinearLayoutManager(horizontalContext, LinearLayoutManager.HORIZONTAL, false);
-
-
-        recyclerView.setLayoutManager(horizontal);
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView,

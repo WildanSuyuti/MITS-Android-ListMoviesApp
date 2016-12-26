@@ -5,16 +5,15 @@
     >
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img_film"
             android:layout_width="100dp"
             android:layout_height="140dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             />
 
         <TextView
@@ -25,7 +24,8 @@
             android:text="Title"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/img_film"
+            android:layout_below="@+id/img_film"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             />
 
         <TextView
@@ -37,7 +37,8 @@
             android:textStyle="bold"
             android:layout_marginBottom="5dp"
             android:layout_below="@+id/tv_title"
-            android:layout_toRightOf="@+id/img_film"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
             />
 
         <TextView
@@ -48,8 +49,9 @@
             android:textSize="15sp"
             android:layout_marginBottom="5dp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/img_film"
             android:layout_below="@+id/tv_genre"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
             />
 
         <TextView
@@ -59,8 +61,9 @@
             android:text="Japan"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/img_film"
             android:layout_below="@+id/tv_year"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
             />
 
         <TextView
@@ -70,9 +73,10 @@
             android:text="1:40:52"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/img_film"
             android:layout_below="@+id/tv_country"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
             />
 
     </RelativeLayout>
