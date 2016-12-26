@@ -38,6 +38,7 @@ public class AddMovieActivity extends AppCompatActivity {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         setResult(CardViewActivity.RESULT_ADD, returnIntent);
 =======
         setResult(GridViewActivity.RESULT_ADD, returnIntent);
@@ -48,6 +49,9 @@ public class AddMovieActivity extends AppCompatActivity {
 =======
         setResult(SwipeRemoveActivity.RESULT_ADD, returnIntent);
 >>>>>>> swipe_to_remove
+=======
+        setResult(ViewGmailActivity.RESULT_ADD, returnIntent);
+>>>>>>> view_gmail
         finish();
     }
 

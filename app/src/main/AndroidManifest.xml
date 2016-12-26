@@ -12,6 +12,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 =======
         <activity android:name=".CardViewActivity">
@@ -25,6 +26,9 @@
 =======
         <activity android:name=".SwipeRemoveActivity">
 >>>>>>> swipe_to_remove
+=======
+        <activity android:name=".ViewGmailActivity">
+>>>>>>> view_gmail
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,6 +40,7 @@
             android:label="List Movie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -54,6 +59,9 @@
 =======
                 android:value=".SwipeRemoveActivity"></meta-data>
 >>>>>>> swipe_to_remove
+=======
+                android:value=".ViewGmailActivity"></meta-data>
+>>>>>>> view_gmail
         </activity>
         <activity android:name=".AddMovieActivity"></activity>
 >>>>>>> cardview
