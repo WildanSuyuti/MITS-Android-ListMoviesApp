@@ -1,5 +1,6 @@
 package com.mits.kakaroto.listmovieapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private MovieAdapter adapter;
     private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager horizontal;
+    private Context horizontalContext;
+
     private Intent intent;
     //private final int REQUEST_CODE = 1;
     public static final int RESULT_ADD = 2;
@@ -50,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
         list.add(new Movie("At Cafe 6", "Comedy", "2016", "Taiwan", "1:43:20", R.drawable.comedy_at_cafe_6));
 
         adapter = new MovieAdapter(list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        horizontal = new LinearLayoutManager(horizontalContext, LinearLayoutManager.HORIZONTAL, false);
+
+
+        recyclerView.setLayoutManager(horizontal);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView,
