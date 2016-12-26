@@ -26,7 +26,7 @@ public class ViewGmailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_view_gmail);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         initRecyclerView();
 
