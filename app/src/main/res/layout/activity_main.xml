@@ -14,7 +14,7 @@
         android:id="@+id/tv_lblSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Your Movie by Genre"
+        android:text="Select View Type"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -35,11 +35,11 @@
     </Spinner>
 
     <Button
-        android:onClick="submitSearch"
-        android:id="@+id/btn_searchMovie"
+        android:onClick="submitOk"
+        android:id="@+id/btn_ok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SEARCH MOVIE BY GENRE"
+        android:text="OK"
         android:textSize="16sp"
         android:layout_below="@id/spiner_movie"
         android:layout_marginTop="@dimen/activity_vertical_margin"

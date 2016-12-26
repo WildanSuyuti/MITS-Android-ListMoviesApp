@@ -29,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spinnerMovie = (Spinner) findViewById(R.id.spiner_movie);
-
         initSpinner();
+
     }
 
-    public void initSpinner(){
+    private void initSpinner(){
         List<String> listMovieGenre = new ArrayList<>();
         listMovieGenre.add("Like Gmail");
         listMovieGenre.add("Card View Type + Swipe to Remove");
@@ -45,12 +45,15 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMovie.setAdapter(adapter);
 
+        choice = spinnerMovie.getAdapter().toString();
+
     }
 
-    public void submitSearch(View view){
-        choice = spinnerMovie.getSelectedItem().toString();
-        Intent intent = new Intent(this, ResultMovieActivity.class);
-        intent.putExtra("choice", choice);
-        startActivity(intent);
+    public void submitOk (View view){
+        if (choice.equalsIgnoreCase("Grid")){
+            Intent intent = new Intent(this, ResultActivity.class);
+            startActivity(intent);
+        }
     }
+
 }
