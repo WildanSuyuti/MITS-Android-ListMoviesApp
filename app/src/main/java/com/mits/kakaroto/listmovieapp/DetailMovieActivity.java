@@ -34,7 +34,7 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     public void submitRemove(View view){
         Intent returnIntent = new Intent();
-        setResult(MainActivity.RESULT_REMOVE, returnIntent);
+        setResult(SwipeRemoveActivity.RESULT_REMOVE, returnIntent);
         finish();
     }
 
