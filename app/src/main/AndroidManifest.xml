@@ -9,10 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 =======
         <activity android:name=".CardViewActivity">
 >>>>>>> cardview
+=======
+        <activity android:name=".GridViewActivity">
+>>>>>>> gridview
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +29,11 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 android:value=".MainActivity"></meta-data>
+=======
+                android:value=".GridViewActivity"></meta-data>
+>>>>>>> gridview
         </activity>
         <activity android:name=".ResultActivity"></activity>
 =======
