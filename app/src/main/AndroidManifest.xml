@@ -11,6 +11,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
 =======
         <activity android:name=".CardViewActivity">
@@ -21,6 +22,9 @@
 =======
         <activity android:name=".HorizontalActivity">
 >>>>>>> horizontal_view
+=======
+        <activity android:name=".SwipeRemoveActivity">
+>>>>>>> swipe_to_remove
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +39,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 android:value=".MainActivity"></meta-data>
 =======
                 android:value=".GridViewActivity"></meta-data>
@@ -46,6 +51,9 @@
 =======
                 android:value=".HorizontalActivity"></meta-data>
 >>>>>>> horizontal_view
+=======
+                android:value=".SwipeRemoveActivity"></meta-data>
+>>>>>>> swipe_to_remove
         </activity>
         <activity android:name=".AddMovieActivity"></activity>
 >>>>>>> cardview

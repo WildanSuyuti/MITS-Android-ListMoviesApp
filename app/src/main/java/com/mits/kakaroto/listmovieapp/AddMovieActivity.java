@@ -37,6 +37,7 @@ public class AddMovieActivity extends AppCompatActivity {
         returnIntent.putExtra("data", new Movie(title,genre,year,country,duration,image));
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         setResult(CardViewActivity.RESULT_ADD, returnIntent);
 =======
         setResult(GridViewActivity.RESULT_ADD, returnIntent);
@@ -44,6 +45,9 @@ public class AddMovieActivity extends AppCompatActivity {
 =======
         setResult(HorizontalActivity.RESULT_ADD, returnIntent);
 >>>>>>> horizontal_view
+=======
+        setResult(SwipeRemoveActivity.RESULT_ADD, returnIntent);
+>>>>>>> swipe_to_remove
         finish();
     }
 
