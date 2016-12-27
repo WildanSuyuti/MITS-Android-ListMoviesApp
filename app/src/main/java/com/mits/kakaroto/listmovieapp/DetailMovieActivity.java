@@ -34,23 +34,7 @@ public class DetailMovieActivity extends AppCompatActivity {
 
     public void submitRemove(View view){
         Intent returnIntent = new Intent();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        setResult(CardViewActivity.RESULT_REMOVE, returnIntent);
-=======
-        setResult(GridViewActivity.RESULT_REMOVE, returnIntent);
->>>>>>> gridview
-=======
-        setResult(HorizontalActivity.RESULT_REMOVE, returnIntent);
->>>>>>> horizontal_view
-=======
-        setResult(SwipeRemoveActivity.RESULT_REMOVE, returnIntent);
->>>>>>> swipe_to_remove
-=======
         setResult(ViewGmailActivity.RESULT_REMOVE, returnIntent);
->>>>>>> view_gmail
         finish();
     }
 

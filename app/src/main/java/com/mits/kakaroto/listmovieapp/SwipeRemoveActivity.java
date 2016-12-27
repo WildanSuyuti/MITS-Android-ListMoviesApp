@@ -52,6 +52,8 @@ public class SwipeRemoveActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
+
+
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView,
                 new RecyclerTouchListener.ClickListener() {
                     @Override

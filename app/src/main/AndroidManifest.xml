@@ -8,63 +8,55 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         <activity android:name=".MainActivity">
-=======
-        <activity android:name=".CardViewActivity">
->>>>>>> cardview
-=======
-        <activity android:name=".GridViewActivity">
->>>>>>> gridview
-=======
-        <activity android:name=".HorizontalActivity">
->>>>>>> horizontal_view
-=======
-        <activity android:name=".SwipeRemoveActivity">
->>>>>>> swipe_to_remove
-=======
-        <activity android:name=".ViewGmailActivity">
->>>>>>> view_gmail
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DetailMovieActivity"
-            android:label="List Movie">
+
+
+        <activity android:name=".AddMovieActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
                 android:value=".MainActivity"></meta-data>
-=======
-                android:value=".GridViewActivity"></meta-data>
->>>>>>> gridview
+
         </activity>
-        <activity android:name=".ResultActivity"></activity>
-=======
-                android:value=".CardViewActivity"></meta-data>
-=======
-                android:value=".HorizontalActivity"></meta-data>
->>>>>>> horizontal_view
-=======
-                android:value=".SwipeRemoveActivity"></meta-data>
->>>>>>> swipe_to_remove
-=======
-                android:value=".ViewGmailActivity"></meta-data>
->>>>>>> view_gmail
+
+        <activity android:name=".GridViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
         </activity>
-        <activity android:name=".AddMovieActivity"></activity>
->>>>>>> cardview
+
+        <activity android:name=".CardViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+
+        </activity>
+
+        <activity android:name=".HorizontalActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+
+        <activity android:name=".SwipeRemoveActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+
+        <activity android:name=".ViewGmailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"></meta-data>
+        </activity>
+
     </application>
 
 </manifest>
