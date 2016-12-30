@@ -9,13 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.mits.kakaroto.listmovieapp.model.AddMovieActivity">
+    tools:context="com.mits.kakaroto.listmovieapp.movie.AddMovieActivity">
 
     <EditText
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/author"
+        android:inputType="textCapWords"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/genre"
+        android:inputType="textCapWords"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
@@ -32,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/year"
+        android:inputType="number"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
@@ -40,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/country"
+        android:inputType="textCapWords"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
@@ -49,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:hint="@string/duration"
+        android:inputType="time"
         />
 
     <Button

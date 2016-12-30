@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.user;
 
 
 import android.os.Bundle;
@@ -6,19 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 
-public class UpdateActivity extends AppCompatActivity {
+public class UpdateUserActivity extends AppCompatActivity {
     private EditText etUpdateName, etUpdateEmail, etUpdateAddress, etUpdatePhone, etUpdateGender, etUpdatePass;
-//    private SessionManager sessionManager;
-    private DbHandlerTableUsers tblUser;
+    private DatabaseHandler tblUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        sessionManager = SessionManager.getInstance();
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_update_user);
 
-        tblUser = new DbHandlerTableUsers(this);
+        tblUser = new DatabaseHandler(this);
 
         etUpdateName = (EditText) findViewById(R.id.et_updateName);
         etUpdateEmail = (EditText) findViewById(R.id.et_updateEmail);
@@ -27,7 +26,6 @@ public class UpdateActivity extends AppCompatActivity {
         etUpdateGender = (EditText) findViewById(R.id.et_updateGender);
         etUpdatePass = (EditText) findViewById(R.id.et_updatePassword);
 
-//        User user = sessionManager.getUser();
         User user = getIntent().getParcelableExtra("data_update");
 
         etUpdateName.setText(user.getName());
@@ -49,8 +47,6 @@ public class UpdateActivity extends AppCompatActivity {
 
         tblUser.updateUser(new User(updateName, updateEmail, updateAddress, updatePhone,
                 updateGender, updatePass));
-//        sessionManager.setRegister(new User(updateName, updateEmail, updateAddress, updatePhone,
-//                updateGender,updatePass));
         finish();
     }
 

@@ -3,18 +3,18 @@ package com.mits.kakaroto.listmovieapp.session;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.mits.kakaroto.listmovieapp.R;
-
-import java.util.List;
+import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
+import com.mits.kakaroto.listmovieapp.user.RegisterUserActivity;
+import com.mits.kakaroto.listmovieapp.user.User;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPass;
     private SessionManager sessionManager;
-    private DbHandlerTableUsers tblUser;
+    private DatabaseHandler tblUser;
     private User user = new User();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         if (sessionManager.isLoggedin()) openDashboard();
 
         setContentView(R.layout.activity_login);
-        tblUser = new DbHandlerTableUsers(this);
+        tblUser = new DatabaseHandler(this);
         etEmail = (EditText) findViewById(R.id.et_emailLogin);
         etPass = (EditText) findViewById(R.id.et_passwordLogin);
 
@@ -61,29 +61,14 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
-        List<User> userList = tblUser.getAllUser();
-        for (int i = 0; i < userList.size(); i++) {
-
-            String emailUser = userList.get(i).getEmail();
-            String passUser = userList.get(i).getPassword();
-            Log.d("Email :", emailUser+" Pass : "+passUser);
-
-            if (email.equalsIgnoreCase(emailUser)
-                    && password.equals(passUser)) {
-                Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
-                user = userList.get(i);
-                sessionManager.setLogin(emailUser, passUser);
-                    openDashboard();
-            } else
-                Toast.makeText(LoginActivity.this, "Email or password is invalid",
-                        Toast.LENGTH_SHORT).show();
-        }
-
+        if (tblUser.checkUser(email, password)){
+            sessionManager.setLogin(email, password);
+            openDashboard();
+        } else Toast.makeText(this, "Email or password is invalid", Toast.LENGTH_SHORT).show();
     }
 
     public void submitSignUp(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, RegisterUserActivity.class));
     }
 
     private void openDashboard() {

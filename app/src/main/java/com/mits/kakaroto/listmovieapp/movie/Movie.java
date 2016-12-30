@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.model;
+package com.mits.kakaroto.listmovieapp.movie;
 
 import android.os.Parcel;
 import android.os.Parcelable;

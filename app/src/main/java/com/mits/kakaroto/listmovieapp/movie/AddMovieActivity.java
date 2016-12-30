@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.model;
+package com.mits.kakaroto.listmovieapp.movie;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.widget.EditText;
 
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.main.MainActivity;
-import com.mits.kakaroto.listmovieapp.model.Movie;
 
 public class AddMovieActivity extends AppCompatActivity {
 

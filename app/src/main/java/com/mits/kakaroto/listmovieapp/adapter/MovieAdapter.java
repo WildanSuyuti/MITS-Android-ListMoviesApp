@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.model.Movie;
+import com.mits.kakaroto.listmovieapp.movie.Movie;
 
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_swipe_remove_movie, parent, false);
+                .inflate(R.layout.row_movie, parent, false);
         return new MyViewHolder(view);
     }
 

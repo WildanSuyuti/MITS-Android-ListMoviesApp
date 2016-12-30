@@ -13,14 +13,14 @@
         </activity>
 
         <activity
-            android:name=".model.UpdateMovieActivity"
+            android:name=".movie.UpdateMovieActivity"
             android:label="List Movie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity"></meta-data>
         </activity>
 
-        <activity android:name=".model.AddMovieActivity"></activity>
+        <activity android:name=".movie.AddMovieActivity"></activity>
 
 
         <activity android:name=".session.LoginActivity">
@@ -32,14 +32,14 @@
         </activity>
 
         <activity
-            android:name=".session.RegisterActivity"
+            android:name=".user.RegisterUserActivity"
             android:label="Register"></activity>
 
         <activity
             android:name=".session.DashboardActivity"
             android:label="Dashbord"></activity>
 
-        <activity android:name=".session.UpdateActivity"></activity>
+        <activity android:name=".user.UpdateUserActivity"></activity>
 
     </application>
 

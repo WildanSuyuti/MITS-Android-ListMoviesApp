@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.user;
 
 import android.os.Parcel;
 import android.os.Parcelable;

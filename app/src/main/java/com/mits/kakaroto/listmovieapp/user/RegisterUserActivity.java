@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,22 +7,24 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
+import com.mits.kakaroto.listmovieapp.session.LoginActivity;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterUserActivity extends AppCompatActivity {
 
     private EditText etName, etEmail, etAddress, etPhone, etGender, etPassword;
     public static final String TAG = "TagMainActivity";
 
-    private DbHandlerTableUsers tblUser;
+    private DatabaseHandler tblUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register_user);
         Log.d(TAG, "onCreate is called");
 
-        tblUser = new DbHandlerTableUsers(this);
+        tblUser = new DatabaseHandler(this);
 
         etName = (EditText) findViewById(R.id.et_name);
         etEmail = (EditText) findViewById(R.id.et_email);
@@ -70,12 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
         tblUser.addUser(new User(name, email, address, phone, gender, pass));
 
-        openDashboard();
-    }
-
-    private void openDashboard() {
-        startActivity(new Intent(this, DashboardActivity.class));
-        finish();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
 }

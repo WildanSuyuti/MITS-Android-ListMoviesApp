@@ -21,7 +21,6 @@ public class SessionManager {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private static SessionManager instance;
-    private User user;
 
     private SessionManager(Context context) {
         sharedPreferences = context.getSharedPreferences(AUTH_PREFERENCES, Context.MODE_PRIVATE);
@@ -36,18 +35,6 @@ public class SessionManager {
         return instance;
     }
 
-    public void setRegister(User user) {
-        editor.putString(NAME, user.getName());
-        editor.putString(EMAIL, user.getEmail());
-        editor.putString(ADDRESS, user.getAddress());
-        editor.putString(PHONE, user.getPhone());
-        editor.putString(GENDER, user.getGender());
-        editor.putString(PASSWORD, user.getPassword());
-
-        editor.putBoolean(ISLOGGEDIN, true);
-        editor.apply();
-    }
-
     public void setLogin(String email, String pass) {
         editor.putString(EMAIL, email);
         editor.putString(PASSWORD, pass);
@@ -55,14 +42,14 @@ public class SessionManager {
         editor.apply();
     }
 
-    public User getUser(){
-        String name = sharedPreferences.getString(NAME, "");
+    public String getEmail(){
         String email = sharedPreferences.getString(EMAIL, "");
-        String address = sharedPreferences.getString(ADDRESS, "");
-        String phone = sharedPreferences.getString(PHONE, "");
-        String gender = sharedPreferences.getString(GENDER, "");
+        return email;
+    }
+
+    public String getPass(){
         String password = sharedPreferences.getString(PASSWORD, "");
-        return new User(name, email, address, phone, gender, password);
+        return password;
     }
 
 

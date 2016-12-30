@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.model;
+package com.mits.kakaroto.listmovieapp.movie;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,19 +7,17 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.main.MainActivity;
 
 
 public class UpdateMovieActivity extends AppCompatActivity {
     private EditText etTitle, etGenre, etYear, etCountry, etDuration;
     private int id;
-    private DbHandlerTableMovies db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_movie);
-
-        db = new DbHandlerTableMovies(this);
 
         etTitle = (EditText) findViewById(R.id.et_titleUpdate);
         etGenre = (EditText) findViewById(R.id.et_genreUpdate);
