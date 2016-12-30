@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mits.kakaroto.listmovieapp">
-gi
     <application
+        android:name=".session.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".main.MainActivity">
         </activity>
+
         <activity
             android:name=".model.UpdateMovieActivity"
             android:label="List Movie">
@@ -22,7 +19,28 @@ gi
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity"></meta-data>
         </activity>
+
         <activity android:name=".model.AddMovieActivity"></activity>
+
+
+        <activity android:name=".session.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".session.RegisterActivity"
+            android:label="Register"></activity>
+
+        <activity
+            android:name=".session.DashboardActivity"
+            android:label="Dashbord"></activity>
+
+        <activity android:name=".session.UpdateActivity"></activity>
+
     </application>
 
 </manifest>

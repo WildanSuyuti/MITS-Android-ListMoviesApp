@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class DbHandlerTableMovies extends SQLiteOpenHelper {
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "db_movies";
     private static final String TABLE_MOVIES = "movies";
     private static final String KEY_ID = "id";
