@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp;
+package com.mits.kakaroto.listmovieapp.main;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,47 +8,46 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.mits.kakaroto.listmovieapp.model.AddMovieActivity;
+import com.mits.kakaroto.listmovieapp.model.DbHandlerTableMovies;
+import com.mits.kakaroto.listmovieapp.model.UpdateMovieActivity;
+import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.adapter.MovieAdapter;
+import com.mits.kakaroto.listmovieapp.model.Movie;
+import com.mits.kakaroto.listmovieapp.utility.RecyclerTouchListener;
+import com.mits.kakaroto.listmovieapp.utility.SpacesItemDecoration;
+
 import java.util.List;
 
-public class SwipeRemoveActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-
-    private MovieSwipeRemoveAdapter adapter;
+    private MovieAdapter adapter;
     private RecyclerView recyclerView;
     private Intent intent;
-    //private final int REQUEST_CODE = 1;
     public static final int RESULT_ADD = 2;
-    public static final int RESULT_REMOVE = 3;
-    private int id;
-
+    public static final int RESULT_UPDATE = 3;
+    private DbHandlerTableMovies db;
+    private List<Movie> list;
+    private int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swipe_remove);
+        setContentView(R.layout.activity_main);
+
+        db = new DbHandlerTableMovies(this);
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         initRecyclerView();
 
     }
 
     public void initRecyclerView() {
-        List<Movie> list;
-        list = new ArrayList<>();
+        list = db.getAllMovies();
 
-        list.add(new Movie("Bounty Hunter", "Action", "2016", "China", "1:40:21", R.drawable.action_bounty_hunters));
-        list.add(new Movie("Max Steel", "Action", "2016", "UK", "1:32:40", R.drawable.action_max_steel));
-        list.add(new Movie("Code Of Honor", "Action", "2016", "USA", "1:46:07", R.drawable.action_code_of_honor));
+        adapter = new MovieAdapter(list);
 
-        list.add(new Movie("Kuroko No Basuke", "Anime", "2016", "Japan", "1:56:51", R.drawable.anime_kuroko_no_basuke));
-        list.add(new Movie("Dragon Ball", "Anime", "2015", "Japan", "1:33:57", R.drawable.anime_dragon_ball_resurrection_f));
-        list.add(new Movie("Saint Seiya", "Anime", "2014", "Japan", "1:43:27", R.drawable.anime_saint_seiya));
-
-        list.add(new Movie("Trolls", "Comedy", "2016", "USA", "1:30:55", R.drawable.comedy_trolls));
-        list.add(new Movie("Baked in Brooklyn", "Comedy", "2016", "USA", "1:40:32", R.drawable.comedy_baked_in_brooklyn));
-        list.add(new Movie("At Cafe 6", "Comedy", "2016", "Taiwan", "1:43:20", R.drawable.comedy_at_cafe_6));
-
-        adapter = new MovieSwipeRemoveAdapter(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
@@ -56,14 +55,14 @@ public class SwipeRemoveActivity extends AppCompatActivity {
                 new RecyclerTouchListener.ClickListener() {
                     @Override
                     public void onClick(View view, int position) {
+                        intent = new Intent(MainActivity.this, UpdateMovieActivity.class);
                         Movie movie = adapter.getItem(position);
-                        id=position;
-                        intent = new Intent(SwipeRemoveActivity.this, DetailMovieActivity.class);
-                        intent.putExtra("position", position);
-                        intent.putExtra("movie", new Movie(movie.getTitle(), movie.getGenre(),
-                                movie.getYear(), movie.getCountry(), movie.getDuration(),
-                                movie.getImageAddrees()));
-                        startActivityForResult(intent, RESULT_REMOVE);
+
+                        intent.putExtra("movie", new Movie(movie.getId(), movie.getTitle(),
+                                movie.getGenre(), movie.getYear(), movie.getCountry(),
+                                movie.getDuration(), movie.getImageAddrees()));
+                        pos = position;
+                        startActivityForResult(intent, RESULT_UPDATE);
                     }
 
                     @Override
@@ -77,17 +76,18 @@ public class SwipeRemoveActivity extends AppCompatActivity {
 
     }
 
-
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,
             ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
         @Override
-        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                              RecyclerView.ViewHolder target) {
             return false;
         }
 
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
+            db.deleteMovie(adapter.getItem(position));
             adapter.remove(position);
         }
     };
@@ -102,12 +102,19 @@ public class SwipeRemoveActivity extends AppCompatActivity {
         String TAG = "";
         if (resultCode == RESULT_ADD) {
             Log.d(TAG, "Success add movie");
-            Movie movie = data.getParcelableExtra("data");
+            Movie movie = data.getParcelableExtra("data_add");
+            db.addMovies(movie);
             adapter.insert(movie);
             recyclerView.scrollToPosition(0);
-        } else if (resultCode == RESULT_REMOVE) {
-            adapter.remove(id);
+        } else if (resultCode == RESULT_UPDATE) {
+            Movie movie = data.getParcelableExtra("data_update");
+
+            db.updateMovie(new Movie(movie.getId(), movie.getTitle(), movie.getGenre(), movie.getYear(),
+                    movie.getCountry(), movie.getDuration(), movie.getImageAddrees()));
+            adapter.update(pos, movie);
+            Log.d(TAG, "Update data Id : " + String.valueOf(movie.getId()));
             recyclerView.scrollToPosition(0);
         }
     }
+
 }

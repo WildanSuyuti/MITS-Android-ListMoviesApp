@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp;
+package com.mits.kakaroto.listmovieapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable;
 
 public class Movie implements Parcelable {
     private String title,genre,year,country,duration;
-    private int imageAddrees;
+    private int imageAddrees, id;
 
 
     public Movie(String title, String genre, String year, String country, String duration, int imageAddres) {
@@ -19,6 +19,27 @@ public class Movie implements Parcelable {
         this.country = country;
         this.duration = duration;
         this.imageAddrees = imageAddres;
+    }
+
+    public Movie(int id, String title, String genre, String year, String country, String duration, int imageAddrees) {
+        this.title = title;
+        this.genre = genre;
+        this.year = year;
+        this.country = country;
+        this.duration = duration;
+        this.imageAddrees = imageAddrees;
+        this.id = id;
+    }
+
+    public Movie() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -69,6 +90,7 @@ public class Movie implements Parcelable {
         this.imageAddrees = imageAddrees;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -82,6 +104,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.country);
         dest.writeString(this.duration);
         dest.writeInt(this.imageAddrees);
+        dest.writeInt(this.id);
     }
 
     protected Movie(Parcel in) {
@@ -91,9 +114,10 @@ public class Movie implements Parcelable {
         this.country = in.readString();
         this.duration = in.readString();
         this.imageAddrees = in.readInt();
+        this.id = in.readInt();
     }
 
-    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);
@@ -104,6 +128,4 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
-
-
 }

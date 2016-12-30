@@ -9,71 +9,49 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.mits.kakaroto.listmovieapp.DetailMovieActivity"
+    tools:context="com.mits.kakaroto.listmovieapp.model.UpdateMovieActivity"
     >
 
-    <TextView
-        android:id="@+id/tv_showTitle"
+    <EditText
+        android:id="@+id/et_titleUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detail Movie"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:hint="@string/author"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
-    <ImageView
-        android:id="@+id/img_showImage"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
+    <EditText
+        android:id="@+id/et_genreUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/genre"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
-    <TextView
-        android:id="@+id/tv_showGenre"
+    <EditText
+        android:id="@+id/et_yearUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:hint="@string/year"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
-    <TextView
-        android:id="@+id/tv_showYear"
+    <EditText
+        android:id="@+id/et_countryUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:hint="@string/country"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
-    <TextView
-        android:id="@+id/tv_showCountry"
+    <EditText
+        android:id="@+id/et_durationUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:hint="@string/duration"
         />
 
-    <TextView
-        android:id="@+id/tv_showDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        />
-
-    <Button
-        android:onClick="submitRemove"
-        android:id="@+id/btn_hapus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="HAPUS"
-        />
 
     <Button
         android:onClick="submitUpdate"
@@ -85,7 +63,7 @@
 
     <Button
         android:onClick="submitCancel"
-        android:id="@+id/btn_cancelDetail"
+        android:id="@+id/btn_cancelUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CANCEL"

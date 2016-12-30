@@ -1,4 +1,4 @@
-package me.didik.activityresultsample;
+package com.mits.kakaroto.listmovieapp.utility;
 
 import android.content.Context;
 import android.content.res.TypedArray;

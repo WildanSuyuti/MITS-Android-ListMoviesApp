@@ -1,10 +1,14 @@
-package com.mits.kakaroto.listmovieapp;
+package com.mits.kakaroto.listmovieapp.model;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.main.MainActivity;
+import com.mits.kakaroto.listmovieapp.model.Movie;
 
 public class AddMovieActivity extends AppCompatActivity {
 
@@ -34,8 +38,8 @@ public class AddMovieActivity extends AppCompatActivity {
         duration = etDuration.getText().toString();
 
         Intent returnIntent = new Intent();
-        returnIntent.putExtra("data", new Movie(title,genre,year,country,duration,image));
-        setResult(SwipeRemoveActivity.RESULT_ADD, returnIntent);
+        returnIntent.putExtra("data_add", new Movie(title,genre,year,country,duration,image));
+        setResult(MainActivity.RESULT_ADD, returnIntent);
         finish();
     }
 

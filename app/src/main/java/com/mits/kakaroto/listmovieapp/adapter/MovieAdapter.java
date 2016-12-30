@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp;
+package com.mits.kakaroto.listmovieapp.adapter;
 
 
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +8,16 @@ import android.widget.TextView;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
+import com.mits.kakaroto.listmovieapp.R;
+import com.mits.kakaroto.listmovieapp.model.Movie;
+
 import java.util.List;
 
 /**
  * Created by kakaroto on 12/21/16.
  */
 
-public class MovieSwipeRemoveAdapter extends RecyclerView.Adapter<MovieSwipeRemoveAdapter.MyViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> dataset;
 
@@ -34,7 +37,7 @@ public class MovieSwipeRemoveAdapter extends RecyclerView.Adapter<MovieSwipeRemo
         }
     }
 
-    public MovieSwipeRemoveAdapter(List<Movie> dataset){
+    public MovieAdapter(List<Movie> dataset){
         this.dataset = dataset;
     }
 
@@ -74,6 +77,11 @@ public class MovieSwipeRemoveAdapter extends RecyclerView.Adapter<MovieSwipeRemo
      public void remove(int position){
         dataset.remove(position);
         notifyItemRemoved(position);
+    }
+
+    public void update(int position, Movie movie){
+        dataset.set(position, movie);
+        notifyItemChanged(position);
     }
 
 }
