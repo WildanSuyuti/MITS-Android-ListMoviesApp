@@ -10,17 +10,27 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".main.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".session.DashboardActivity"></meta-data>
         </activity>
 
         <activity
             android:name=".movie.UpdateMovieActivity"
-            android:label="List Movie">
+            android:label="Update Movie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".main.MainActivity"></meta-data>
         </activity>
 
-        <activity android:name=".movie.AddMovieActivity"></activity>
+        <activity
+            android:name=".movie.AddMovieActivity"
+            android:label="Add Movie"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".main.MainActivity"></meta-data>
+        </activity>
 
 
         <activity android:name=".session.LoginActivity">
@@ -33,13 +43,26 @@
 
         <activity
             android:name=".user.RegisterUserActivity"
-            android:label="Register"></activity>
+            android:label="Register">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".session.DashboardActivity">
+            </meta-data>
+
+        </activity>
 
         <activity
             android:name=".session.DashboardActivity"
             android:label="Dashbord"></activity>
 
-        <activity android:name=".user.UpdateUserActivity"></activity>
+        <activity
+            android:name=".user.UpdateUserActivity"
+            android:label="Update User">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".session.DashboardActivity"></meta-data>
+        </activity>
 
     </application>
 

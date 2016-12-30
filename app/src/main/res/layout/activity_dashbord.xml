@@ -38,6 +38,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List Movie"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <Button
@@ -46,7 +50,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Log Out"
-        android:layout_below="@+id/btn_ubahData"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
         />
 
 </LinearLayout>

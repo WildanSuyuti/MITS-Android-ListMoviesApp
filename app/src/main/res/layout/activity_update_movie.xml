@@ -64,6 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="UPDATE"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <Button
@@ -72,6 +76,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CANCEL"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
         />
 
 

@@ -65,6 +65,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
         />
 </LinearLayout>
