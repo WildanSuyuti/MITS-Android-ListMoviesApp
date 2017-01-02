@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 
 import com.mits.kakaroto.listmovieapp.movie.FormMovieActivity;
@@ -35,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         tblMovie = DatabaseHandler.getInstance();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         initRecyclerView();
-
     }
 
     public void initRecyclerView() {
@@ -83,8 +87,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
-            tblMovie.deleteMovie(adapter.getItem(position));
+            tblMovie.deleteMovieById(adapter.getItem(position).getId());
             adapter.remove(position);
+
         }
     };
 
@@ -105,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             tblMovie.updateMovie(new Movie(movie.getId(), movie.getTitle(), movie.getGenre(),
                     movie.getYear(), movie.getCountry(), movie.getDuration(),
                     movie.getImageAddrees()));
-
             adapter.update(pos, movie);
             recyclerView.scrollToPosition(0);
         }

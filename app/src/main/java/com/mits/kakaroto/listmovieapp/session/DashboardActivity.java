@@ -49,6 +49,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void submitLogout(View view) {
         sessionManager.clear();
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
     public void subMitShowMovie(View view){

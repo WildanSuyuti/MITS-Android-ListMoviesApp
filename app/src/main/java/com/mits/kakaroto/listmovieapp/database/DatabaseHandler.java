@@ -120,7 +120,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public List<Movie> getAllMovies() {
         List<Movie> movieList = new ArrayList();
-        String selectQuery = "SELECT * FROM " + TABLE_MOVIES;
+        String selectQuery = "SELECT * FROM " + TABLE_MOVIES +" ORDER BY "+KEY_IDMOVIES+" DESC";
 
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -195,6 +195,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_MOVIES, KEY_IDMOVIES + " = ?",
                 new String[]{String.valueOf(movie.getId())});
         Log.d(TAG,"Delete Succes !");
+    }
+
+    public void deleteMovieById(int id) {
+        db.execSQL("DELETE FROM "+TABLE_MOVIES+" WHERE "+KEY_IDMOVIES+" = "+id);
     }
 
     public void deleteUser(User user) {

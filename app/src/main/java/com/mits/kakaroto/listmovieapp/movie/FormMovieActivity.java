@@ -46,6 +46,7 @@ public class FormMovieActivity extends AppCompatActivity {
             etYear.setText(movie.getYear());
             etCountry.setText(movie.getCountry());
             etDuration.setText(movie.getDuration());
+            Glide.with(FormMovieActivity.this).load(movie.getImageAddrees()).into(imgFormFilm);
         } else getSupportActionBar().setTitle("Add Data");
     }
 

@@ -69,12 +69,14 @@ public class LoginActivity extends AppCompatActivity {
 
     public void submitSignUp(View view) {
         startActivity(new Intent(this, RegisterUserActivity.class));
+        finish();
     }
 
     private void openDashboard() {
         Intent data = new Intent(this, DashboardActivity.class);
         data.putExtra("data_user", user);
         startActivity(data);
+        finish();
     }
 
 }
