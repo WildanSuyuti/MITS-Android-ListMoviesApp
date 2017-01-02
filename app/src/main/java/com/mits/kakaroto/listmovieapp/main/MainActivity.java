@@ -6,14 +6,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.View;
 
-import com.mits.kakaroto.listmovieapp.movie.FormMovieActivity;
+import com.mits.kakaroto.listmovieapp.fitur.movie.FormMovieActivity;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.adapter.MovieAdapter;
-import com.mits.kakaroto.listmovieapp.movie.Movie;
+import com.mits.kakaroto.listmovieapp.fitur.movie.MovieAdapter;
+import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
 import com.mits.kakaroto.listmovieapp.utility.RecyclerTouchListener;
 import com.mits.kakaroto.listmovieapp.utility.SpacesItemDecoration;
 
@@ -58,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, FormMovieActivity.class);
                         Movie movie = adapter.getItem(position);
 
-                        intent.putExtra("movie", new Movie(movie.getId(), movie.getTitle(),
-                                movie.getGenre(), movie.getYear(), movie.getCountry(),
-                                movie.getDuration(), movie.getImageAddrees()));
+                        intent.putExtra("movie", movie);
                         pos = position;
                         startActivityForResult(intent, RESULT_UPDATE);
                     }

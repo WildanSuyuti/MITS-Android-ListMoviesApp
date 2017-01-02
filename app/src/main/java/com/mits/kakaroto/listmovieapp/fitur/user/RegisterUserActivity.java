@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.user;
+package com.mits.kakaroto.listmovieapp.fitur.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.session.DashboardActivity;
+import com.mits.kakaroto.listmovieapp.fitur.model.User;
+import com.mits.kakaroto.listmovieapp.session.LoginActivity;
 import com.mits.kakaroto.listmovieapp.session.SessionManager;
 
 public class RegisterUserActivity extends AppCompatActivity {
@@ -73,7 +74,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         tblUser.addUser(new User(name, email, address, phone, gender, pass));
         sessionManager.setLogin(email, pass);
-        startActivity(new Intent(this, DashboardActivity.class));
+        Intent returnIntent = new Intent();
+        setResult(LoginActivity.REQUEST_REGISTER, returnIntent);
         finish();
     }
 

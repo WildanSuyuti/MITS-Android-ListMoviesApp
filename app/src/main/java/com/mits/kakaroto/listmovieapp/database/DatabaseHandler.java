@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.mits.kakaroto.listmovieapp.movie.Movie;
-import com.mits.kakaroto.listmovieapp.user.User;
+import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
+import com.mits.kakaroto.listmovieapp.fitur.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

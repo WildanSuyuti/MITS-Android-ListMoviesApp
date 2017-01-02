@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".movie.FormMovieActivity"
+            android:name=".fitur.movie.FormMovieActivity"
             android:label="Form Movie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -42,7 +42,7 @@
         </activity>
 
         <activity
-            android:name=".user.RegisterUserActivity"
+            android:name=".fitur.user.RegisterUserActivity"
             android:label="Register">
 
             <meta-data
@@ -57,7 +57,7 @@
             android:label="Dashbord"></activity>
 
         <activity
-            android:name=".user.UpdateUserActivity"
+            android:name=".fitur.user.UpdateUserActivity"
             android:label="Update User">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

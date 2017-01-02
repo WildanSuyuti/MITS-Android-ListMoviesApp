@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.main.MainActivity;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.user.User;
+import com.mits.kakaroto.listmovieapp.fitur.model.User;
 
 import java.util.List;
 

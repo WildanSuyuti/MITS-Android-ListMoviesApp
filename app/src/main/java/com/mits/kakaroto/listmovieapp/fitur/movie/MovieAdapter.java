@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.adapter;
+package com.mits.kakaroto.listmovieapp.fitur.movie;
 
 
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 
 import com.bumptech.glide.Glide;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.movie.Movie;
+import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
 
 import java.util.List;
 
