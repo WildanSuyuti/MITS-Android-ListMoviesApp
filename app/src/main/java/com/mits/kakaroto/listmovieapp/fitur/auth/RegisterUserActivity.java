@@ -75,9 +75,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         tblUser.addUser(new User(name, email, address, phone, gender, pass));
         sessionManager.setLogin(email, pass);
-        /*Intent returnIntent = new Intent();
-        setResult(LoginActivity.REQUEST_REGISTER, returnIntent);
-        finish();*/
+
         Intent intent = new Intent(this, DashboardActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
