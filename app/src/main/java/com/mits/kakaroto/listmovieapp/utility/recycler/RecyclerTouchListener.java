@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.utility;
+package com.mits.kakaroto.listmovieapp.utility.recycler;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

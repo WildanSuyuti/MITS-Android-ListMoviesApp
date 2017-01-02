@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.fitur.model.User;
+import com.mits.kakaroto.listmovieapp.model.User;
 
 public class UpdateUserActivity extends AppCompatActivity {
     private EditText etUpdateName, etUpdateEmail, etUpdateAddress, etUpdatePhone, etUpdateGender, etUpdatePass;

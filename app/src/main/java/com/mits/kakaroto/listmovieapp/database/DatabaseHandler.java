@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
-import com.mits.kakaroto.listmovieapp.fitur.model.User;
+import com.mits.kakaroto.listmovieapp.model.Movie;
+import com.mits.kakaroto.listmovieapp.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -218,10 +218,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        Movie movie = new Movie(cursor.getInt(0),
+        return new Movie(cursor.getInt(0),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3),
                 cursor.getString(4), cursor.getString(5), cursor.getString(6));
-        return movie;
     }
 
     public User getUser(int id) {
@@ -231,10 +230,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
-        User user = new User(cursor.getInt(0),
+        return new User(cursor.getInt(0),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3),
                 cursor.getString(4), cursor.getString(5), cursor.getString(6));
-        return user;
     }
 
     public boolean checkUser(String email, String pass){

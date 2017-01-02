@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.fitur.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.main.MainActivity;
+import com.mits.kakaroto.listmovieapp.fitur.movie.MovieActivity;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.fitur.model.User;
+import com.mits.kakaroto.listmovieapp.fitur.auth.LoginActivity;
+import com.mits.kakaroto.listmovieapp.model.User;
+import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
         finish();
     }
     public void subMitShowMovie(View view){
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MovieActivity.class));
     }
 
 }

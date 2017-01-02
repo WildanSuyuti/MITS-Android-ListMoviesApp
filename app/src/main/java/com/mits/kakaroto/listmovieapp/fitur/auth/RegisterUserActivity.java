@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.fitur.user;
+package com.mits.kakaroto.listmovieapp.fitur.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.fitur.model.User;
-import com.mits.kakaroto.listmovieapp.session.LoginActivity;
-import com.mits.kakaroto.listmovieapp.session.SessionManager;
+import com.mits.kakaroto.listmovieapp.fitur.user.DashboardActivity;
+import com.mits.kakaroto.listmovieapp.model.User;
+import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
 public class RegisterUserActivity extends AppCompatActivity {
 
@@ -38,35 +39,35 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     public void submitSave(View view) {
 
-        String name =  etName.getText().toString();
-        String email =  etEmail.getText().toString();
+        String name = etName.getText().toString();
+        String email = etEmail.getText().toString();
         String address = etAddress.getText().toString();
-        String phone =  etPhone.getText().toString();
-        String gender =  etGender.getText().toString();
-        String pass =  etPassword.getText().toString();
+        String phone = etPhone.getText().toString();
+        String gender = etGender.getText().toString();
+        String pass = etPassword.getText().toString();
 
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             etEmail.setError("Email cannot be blank");
             etEmail.requestFocus();
 
             return;
         }
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             etEmail.setError("Email is not valid");
             etEmail.requestFocus();
 
             return;
         }
 
-        if (pass.isEmpty()){
+        if (pass.isEmpty()) {
             etPassword.setError("Password cannot be blank");
             etPassword.requestFocus();
 
             return;
         }
 
-        if (pass.length() < 8){
+        if (pass.length() < 8) {
             etPassword.setError("Password must have 8 characters.");
             etPassword.requestFocus();
 
@@ -74,8 +75,12 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
         tblUser.addUser(new User(name, email, address, phone, gender, pass));
         sessionManager.setLogin(email, pass);
-        Intent returnIntent = new Intent();
+        /*Intent returnIntent = new Intent();
         setResult(LoginActivity.REQUEST_REGISTER, returnIntent);
+        finish();*/
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         finish();
     }
 

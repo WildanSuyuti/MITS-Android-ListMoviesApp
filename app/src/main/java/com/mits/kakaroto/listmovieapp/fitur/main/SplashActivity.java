@@ -1,11 +1,11 @@
-package com.mits.kakaroto.listmovieapp.main;
+package com.mits.kakaroto.listmovieapp.fitur.main;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.session.LoginActivity;
+import com.mits.kakaroto.listmovieapp.fitur.auth.LoginActivity;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
