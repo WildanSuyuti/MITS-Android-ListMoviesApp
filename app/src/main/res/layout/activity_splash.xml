@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     
-    tools:context=".main.SplashActivity">
+    tools:context=".fitur.main.SplashActivity">
 
     <ImageView
         android:id="@+id/iv_logo"

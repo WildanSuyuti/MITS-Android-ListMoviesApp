@@ -9,8 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.main.MainActivity;
-import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
+import com.mits.kakaroto.listmovieapp.model.Movie;
 
 import java.io.File;
 
@@ -101,10 +100,10 @@ public class FormMovieActivity extends AppCompatActivity {
         Intent returnIntent = new Intent();
         if (movie != null) {
             returnIntent.putExtra("data_update", new Movie(id, title, genre, year, country, duration, path));
-            setResult(MainActivity.RESULT_UPDATE, returnIntent);
+            setResult(MovieActivity.RESULT_UPDATE, returnIntent);
         } else {
             returnIntent.putExtra("data_add", new Movie(title, genre, year, country, duration, path));
-            setResult(MainActivity.RESULT_ADD, returnIntent);
+            setResult(MovieActivity.RESULT_ADD, returnIntent);
         }
         finish();
 

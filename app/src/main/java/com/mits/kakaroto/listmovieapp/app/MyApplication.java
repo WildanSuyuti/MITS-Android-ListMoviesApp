@@ -1,8 +1,9 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.app;
 
 import android.app.Application;
 
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
+import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
 /**
  * Created by sunari on 29/12/16.

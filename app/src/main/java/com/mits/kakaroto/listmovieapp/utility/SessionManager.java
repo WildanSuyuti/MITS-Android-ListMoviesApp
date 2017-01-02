@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.utility;
 
 import android.content.Context;
 import android.content.SharedPreferences;

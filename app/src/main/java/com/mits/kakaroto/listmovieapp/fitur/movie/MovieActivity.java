@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.main;
+package com.mits.kakaroto.listmovieapp.fitur.movie;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,17 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import com.mits.kakaroto.listmovieapp.fitur.movie.FormMovieActivity;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.fitur.movie.MovieAdapter;
-import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
-import com.mits.kakaroto.listmovieapp.utility.RecyclerTouchListener;
-import com.mits.kakaroto.listmovieapp.utility.SpacesItemDecoration;
+import com.mits.kakaroto.listmovieapp.model.Movie;
+import com.mits.kakaroto.listmovieapp.utility.recycler.RecyclerTouchListener;
+import com.mits.kakaroto.listmovieapp.utility.recycler.SpacesItemDecoration;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MovieActivity extends AppCompatActivity {
 
     private MovieAdapter adapter;
     private RecyclerView recyclerView;
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initRecyclerView() {
         List<Movie> list = tblMovie.getAllMovies();
-        adapter = new MovieAdapter(MainActivity.this, list);
+        adapter = new MovieAdapter(MovieActivity.this, list);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerTouchListener.ClickListener() {
                     @Override
                     public void onClick(View view, int position) {
-                        intent = new Intent(MainActivity.this, FormMovieActivity.class);
+                        intent = new Intent(MovieActivity.this, FormMovieActivity.class);
                         Movie movie = adapter.getItem(position);
 
                         intent.putExtra("movie", movie);

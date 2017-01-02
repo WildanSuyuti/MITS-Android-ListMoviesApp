@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 
 import com.bumptech.glide.Glide;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.fitur.model.Movie;
+import com.mits.kakaroto.listmovieapp.model.Movie;
 
 import java.util.List;
 

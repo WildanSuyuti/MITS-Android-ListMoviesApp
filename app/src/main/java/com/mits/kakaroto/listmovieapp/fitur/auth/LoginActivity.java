@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.session;
+package com.mits.kakaroto.listmovieapp.fitur.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,9 @@ import android.widget.Toast;
 
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.fitur.user.RegisterUserActivity;
-import com.mits.kakaroto.listmovieapp.fitur.model.User;
+import com.mits.kakaroto.listmovieapp.fitur.user.DashboardActivity;
+import com.mits.kakaroto.listmovieapp.model.User;
+import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPass;
@@ -77,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void openDashboard() {
         Intent data = new Intent(this, DashboardActivity.class);
-        data.putExtra("data_user", user);
         startActivity(data);
         finish();
     }

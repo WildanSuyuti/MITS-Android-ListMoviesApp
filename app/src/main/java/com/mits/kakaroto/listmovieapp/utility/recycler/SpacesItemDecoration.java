@@ -1,4 +1,4 @@
-package com.mits.kakaroto.listmovieapp.utility;
+package com.mits.kakaroto.listmovieapp.utility.recycler;
 
 import android.content.Context;
 import android.graphics.Rect;
