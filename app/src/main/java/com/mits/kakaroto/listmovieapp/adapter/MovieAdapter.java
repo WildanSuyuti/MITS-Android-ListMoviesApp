@@ -1,6 +1,7 @@
 package com.mits.kakaroto.listmovieapp.adapter;
 
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
 
+import com.bumptech.glide.Glide;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.movie.Movie;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
 
     private List<Movie> dataset;
+    private Context context;
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         TextView title, year, genre, country, duration;
@@ -37,7 +40,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         }
     }
 
-    public MovieAdapter(List<Movie> dataset){
+    public MovieAdapter(Context context, List<Movie> dataset){
+        this.context = context;
         this.dataset = dataset;
     }
 
@@ -57,7 +61,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
         holder.year.setText(movie.getYear());
         holder.country.setText(movie.getCountry());
         holder.duration.setText(movie.getDuration());
-        holder.image.setImageResource(movie.getImageAddrees());
+        Glide.with(context).load(movie.getImageAddrees()).into(holder.image);
     }
 
     @Override

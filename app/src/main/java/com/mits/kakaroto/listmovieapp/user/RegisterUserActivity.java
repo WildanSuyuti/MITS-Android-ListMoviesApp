@@ -24,7 +24,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
         Log.d(TAG, "onCreate is called");
 
-        tblUser = new DatabaseHandler(this);
+        tblUser = DatabaseHandler.getInstance();
 
         etName = (EditText) findViewById(R.id.et_name);
         etEmail = (EditText) findViewById(R.id.et_email);

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mits.kakaroto.listmovieapp">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:name=".session.MyApplication"
         android:allowBackup="true"
@@ -16,24 +19,19 @@
         </activity>
 
         <activity
-            android:name=".movie.UpdateMovieActivity"
-            android:label="Update Movie">
+            android:name=".movie.FormMovieActivity"
+            android:label="Form Movie">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".main.MainActivity"></meta-data>
-        </activity>
-
-        <activity
-            android:name=".movie.AddMovieActivity"
-            android:label="Add Movie"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".main.MainActivity"></meta-data>
+                android:value=".main.MainActivity">
+            </meta-data>
         </activity>
 
 
         <activity android:name=".session.LoginActivity">
+        </activity>
+
+        <activity android:name=".main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,11 +8,11 @@ import android.os.Parcelable;
  */
 
 public class Movie implements Parcelable {
-    private String title,genre,year,country,duration;
-    private int imageAddrees, id;
+    private String title,genre,year,country,duration, imageAddrees;
+    private int id;
 
 
-    public Movie(String title, String genre, String year, String country, String duration, int imageAddres) {
+    public Movie(String title, String genre, String year, String country, String duration, String imageAddres) {
         this.title = title;
         this.genre = genre;
         this.year = year;
@@ -21,7 +21,7 @@ public class Movie implements Parcelable {
         this.imageAddrees = imageAddres;
     }
 
-    public Movie(int id, String title, String genre, String year, String country, String duration, int imageAddrees) {
+    public Movie(int id, String title, String genre, String year, String country, String duration, String imageAddrees) {
         this.title = title;
         this.genre = genre;
         this.year = year;
@@ -82,11 +82,11 @@ public class Movie implements Parcelable {
         this.duration = duration;
     }
 
-    public int getImageAddrees() {
+    public String getImageAddrees() {
         return imageAddrees;
     }
 
-    public void setImageAddrees(int imageAddrees) {
+    public void setImageAddrees(String imageAddrees) {
         this.imageAddrees = imageAddrees;
     }
 
@@ -103,7 +103,7 @@ public class Movie implements Parcelable {
         dest.writeString(this.year);
         dest.writeString(this.country);
         dest.writeString(this.duration);
-        dest.writeInt(this.imageAddrees);
+        dest.writeString(this.imageAddrees);
         dest.writeInt(this.id);
     }
 
@@ -113,7 +113,7 @@ public class Movie implements Parcelable {
         this.year = in.readString();
         this.country = in.readString();
         this.duration = in.readString();
-        this.imageAddrees = in.readInt();
+        this.imageAddrees = in.readString();
         this.id = in.readInt();
     }
 

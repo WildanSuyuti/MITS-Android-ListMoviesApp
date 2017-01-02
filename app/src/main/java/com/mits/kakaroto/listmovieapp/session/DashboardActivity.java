@@ -22,7 +22,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sessionManager = SessionManager.getInstance();
         setContentView(R.layout.activity_dashbord);
-        tblUser = new DatabaseHandler(this);
+        tblUser = DatabaseHandler.getInstance();
 
     }
 

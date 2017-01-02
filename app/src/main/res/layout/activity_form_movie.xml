@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_result_movie"
+    android:id="@+id/activity_add_movie"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,47 +9,51 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.mits.kakaroto.listmovieapp.movie.UpdateMovieActivity"
-    >
+    tools:context="com.mits.kakaroto.listmovieapp.movie.FormMovieActivity">
+
+    <ImageView
+        android:onClick="selectImage"
+        android:id="@+id/img_formFilm"
+        android:src="@drawable/change_photo"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        />
 
     <EditText
-        android:id="@+id/et_titleUpdate"
+        android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/author"
         android:inputType="textCapWords"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <EditText
-        android:id="@+id/et_genreUpdate"
+        android:id="@+id/et_genre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/genre"
         android:inputType="textCapWords"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <EditText
-        android:id="@+id/et_yearUpdate"
+        android:id="@+id/et_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/year"
         android:inputType="number"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <EditText
-        android:id="@+id/et_countryUpdate"
+        android:id="@+id/et_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/country"
         android:inputType="textCapWords"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         />
 
     <EditText
-        android:id="@+id/et_durationUpdate"
+        android:id="@+id/et_duration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -57,22 +61,21 @@
         android:inputType="time"
         />
 
-
     <Button
-        android:onClick="submitUpdate"
-        android:id="@+id/btn_update"
+        android:onClick="submitSave"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="UPDATE"
-        android:textColor="@color/colorWhite"
+        android:text="SAVE"
         android:textSize="20sp"
-        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@color/colorPrimary"
         />
 
     <Button
         android:onClick="submitCancel"
-        android:id="@+id/btn_cancelUpdate"
+        android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CANCEL"
@@ -80,6 +83,5 @@
         android:textColor="@color/colorWhite"
         android:background="@color/colorPrimary"
         />
-
 
 </LinearLayout>

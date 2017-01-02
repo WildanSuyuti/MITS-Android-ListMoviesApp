@@ -40,8 +40,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_PASSWORD = "password";
     public static final String TAG = "Tag Database : ";
 
+
+    private static SQLiteDatabase db;
+    private static DatabaseHandler instance;
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static void init(Context context){
+        instance = new DatabaseHandler(context);
+        db = instance.getWritableDatabase();
+    }
+
+    public static synchronized DatabaseHandler getInstance() {
+        return instance;
     }
 
     @Override
@@ -80,7 +93,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void addMovies(Movie movie) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, movie.getTitle());
         values.put(KEY_GENRE, movie.getGenre());
@@ -91,11 +103,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.insert(TABLE_MOVIES, null, values);
         Log.d(TAG,"Add data Succes !");
-        db.close();
     }
 
     public void addUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, user.getName());
         values.put(KEY_EMAIL, user.getEmail());
@@ -106,14 +116,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.insert(TABLE_USERS, null, values);
         Log.d(TAG,"Add data Succes !");
-        db.close();
     }
 
     public List<Movie> getAllMovies() {
         List<Movie> movieList = new ArrayList();
         String selectQuery = "SELECT * FROM " + TABLE_MOVIES;
 
-        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
@@ -124,12 +132,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 movie.setYear(cursor.getString(3));
                 movie.setCountry(cursor.getString(4));
                 movie.setDuration(cursor.getString(5));
-                movie.setImageAddrees(Integer.parseInt(cursor.getString(6)));
+                movie.setImageAddrees(cursor.getString(6));
                 movieList.add(movie);
             } while (cursor.moveToNext());
         }
 
-        db.close();
         return movieList;
     }
 
@@ -137,7 +144,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<User> userList = new ArrayList();
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
 
-        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
@@ -154,12 +160,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        db.close();
         return userList;
     }
 
     public void updateMovie(Movie movie) {
-        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_TITLE, movie.getTitle());
@@ -171,11 +175,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d(TAG,"Update Succes !");
 
         db.update(TABLE_MOVIES, values, KEY_IDMOVIES + " = '"+ movie.getId() +"'" , null);
-        db.close();
     }
 
     public void updateUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, user.getName());
@@ -187,33 +189,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.d(TAG,"Update Succes !");
 
         db.update(TABLE_USERS, values, KEY_IDUSERS + " = '"+ user.getId() +"'" , null);
-        db.close();
     }
 
     public void deleteMovie(Movie movie) {
-        SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_MOVIES, KEY_IDMOVIES + " = ?",
                 new String[]{String.valueOf(movie.getId())});
         Log.d(TAG,"Delete Succes !");
-        db.close();
     }
 
     public void deleteUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, KEY_IDUSERS + " = ?",
                 new String[]{String.valueOf(user.getId())});
         Log.d(TAG,"Delete Succes !");
-        db.close();
     }
 
     public void deleteAllUser() {
-        SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, null, null);
-        db.close();
     }
 
     public Movie getMovie(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_MOVIES, new String[] { KEY_IDMOVIES,
                         KEY_TITLE, KEY_GENRE, KEY_YEAR, KEY_COUNTRY, KEY_DURATION,
                         KEY_IMAGE }, KEY_IDMOVIES + "=?",
@@ -222,12 +216,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
         Movie movie = new Movie(cursor.getInt(0),
                 cursor.getString(1), cursor.getString(2), cursor.getString(3),
-                cursor.getString(4), cursor.getString(5), Integer.parseInt(cursor.getString(6)));
+                cursor.getString(4), cursor.getString(5), cursor.getString(6));
         return movie;
     }
 
     public User getUser(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_USERS, new String[] { KEY_IDUSERS,
                         KEY_NAME, KEY_EMAIL, KEY_ADDRESS, KEY_PHONE, KEY_GENDER,
                         KEY_PASSWORD }, KEY_IDUSERS + "=?",
@@ -241,7 +234,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public boolean checkUser(String email, String pass){
-        SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + TABLE_USERS + " WHERE " + KEY_EMAIL + " = '" + email
                 + "' AND " + KEY_PASSWORD  + " = '" + pass +"'";
 

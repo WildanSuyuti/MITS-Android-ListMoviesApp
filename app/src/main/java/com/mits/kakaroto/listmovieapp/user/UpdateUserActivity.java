@@ -17,7 +17,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
 
-        tblUser = new DatabaseHandler(this);
+        tblUser = DatabaseHandler.getInstance();
 
         etUpdateName = (EditText) findViewById(R.id.et_updateName);
         etUpdateEmail = (EditText) findViewById(R.id.et_updateEmail);

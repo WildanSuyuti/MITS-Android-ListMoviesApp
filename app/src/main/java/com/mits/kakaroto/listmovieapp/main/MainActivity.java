@@ -8,9 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 
-import com.mits.kakaroto.listmovieapp.movie.AddMovieActivity;
+import com.mits.kakaroto.listmovieapp.movie.FormMovieActivity;
 import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
-import com.mits.kakaroto.listmovieapp.movie.UpdateMovieActivity;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.adapter.MovieAdapter;
 import com.mits.kakaroto.listmovieapp.movie.Movie;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tblMovie = new DatabaseHandler(this);
+        tblMovie = DatabaseHandler.getInstance();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         initRecyclerView();
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initRecyclerView() {
         List<Movie> list = tblMovie.getAllMovies();
-        adapter = new MovieAdapter(list);
+        adapter = new MovieAdapter(MainActivity.this, list);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 new RecyclerTouchListener.ClickListener() {
                     @Override
                     public void onClick(View view, int position) {
-                        intent = new Intent(MainActivity.this, UpdateMovieActivity.class);
+                        intent = new Intent(MainActivity.this, FormMovieActivity.class);
                         Movie movie = adapter.getItem(position);
 
                         intent.putExtra("movie", new Movie(movie.getId(), movie.getTitle(),
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void submitAddMovie(View view) {
-        Intent intent = new Intent(this, AddMovieActivity.class);
+        Intent intent = new Intent(this, FormMovieActivity.class);
         startActivityForResult(intent, RESULT_ADD);
     }
 
