@@ -147,10 +147,11 @@ public class User extends Model implements Parcelable {
         if (user != null) return true; else return false;
     }
 
-    public static List<User> getLogin(String email, String password) {
-        return new Select().from(User.class)
-                .where("email = ? ", email)
-                .where("password = ? ", password)
-                .execute();
+    public static User getUserLogin(String email, String password){
+        User user = new Select()
+                .from(User.class)
+                .where("Email = '"+ email+"' AND Password = '"+password+"'")
+                .executeSingle();
+        return user;
     }
 }

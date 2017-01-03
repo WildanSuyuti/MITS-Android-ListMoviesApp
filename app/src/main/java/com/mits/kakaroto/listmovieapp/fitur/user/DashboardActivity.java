@@ -29,15 +29,14 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         TextView tvUser = (TextView) findViewById(R.id.tv_user);
-        String result = "";
         String sessionEmail = sessionManager.getEmail();
         String sesseionPass = sessionManager.getPass();
-        List<User> users = User.getLogin(sessionEmail, sesseionPass);
-        for (User user : users) {
-            result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
-                    user.getAddress() + "\n Phone : " + user.getPhone() + "\n" +
-                    " Gender : " + user.getGender() + "\n Password : " + user.getPassword();
-        }
+
+        User user = User.getUserLogin(sessionEmail, sesseionPass);
+        String result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
+                user.getAddress() + "\n Phone : " + user.getPhone() + "\n" +
+                " Gender : " + user.getGender() + "\n Password : " + user.getPassword();
+
         tvUser.setText(result);
 
     }
@@ -47,6 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+
     public void subMitShowMovie(View view) {
         startActivity(new Intent(this, MovieActivity.class));
     }
