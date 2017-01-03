@@ -12,6 +12,8 @@ import com.mits.kakaroto.listmovieapp.fitur.auth.LoginActivity;
 import com.mits.kakaroto.listmovieapp.model.User;
 import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
+import java.util.List;
+
 
 public class DashboardActivity extends AppCompatActivity {
     private SessionManager sessionManager;
@@ -21,22 +23,23 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sessionManager = SessionManager.getInstance();
         setContentView(R.layout.activity_dashbord);
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         TextView tvUser = (TextView) findViewById(R.id.tv_user);
-
+        String result = "";
         String sessionEmail = sessionManager.getEmail();
         String sesseionPass = sessionManager.getPass();
-        User user = User.getLogin(sessionEmail, sesseionPass);
-        String result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
-                user.getAddress() + "\n Phone : " + user.getPhone() + "\n" +
-                " Gender : " + user.getGender() + "\n Password : " + user.getPassword();
-
+        List<User> users = User.getLogin(sessionEmail, sesseionPass);
+        for (User user : users) {
+            result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
+                    user.getAddress() + "\n Phone : " + user.getPhone() + "\n" +
+                    " Gender : " + user.getGender() + "\n Password : " + user.getPassword();
+        }
         tvUser.setText(result);
+
     }
 
     public void submitLogout(View view) {
