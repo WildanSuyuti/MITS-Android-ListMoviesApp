@@ -100,12 +100,7 @@ public class FormMovieActivity extends AppCompatActivity {
 
         Intent returnIntent = new Intent();
         if (movie != null) {
-
-            Movie data = new Movie(title, genre, year, country, duration, path);
-            returnIntent.putExtra("data_update", data);
-            //String id = getIntent().getStringExtra("id_movie");
-            //Movie.updateMovie((Long) data.getId(), data);
-
+            returnIntent.putExtra("data_update", new Movie(title, genre, year, country, duration, path));
             setResult(MovieActivity.RESULT_UPDATE, returnIntent);
         } else {
             returnIntent.putExtra("data_add", new Movie(title, genre, year, country, duration, path));

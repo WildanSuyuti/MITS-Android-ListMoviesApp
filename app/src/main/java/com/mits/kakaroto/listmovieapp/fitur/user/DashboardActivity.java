@@ -27,13 +27,12 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        String result = "";
         TextView tvUser = (TextView) findViewById(R.id.tv_user);
 
         String sessionEmail = sessionManager.getEmail();
         String sesseionPass = sessionManager.getPass();
         User user = User.getLogin(sessionEmail, sesseionPass);
-        result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
+        String result = " Name : " + user.getName() + "\n Email : " + user.getEmail() + "\n Address : " +
                 user.getAddress() + "\n Phone : " + user.getPhone() + "\n" +
                 " Gender : " + user.getGender() + "\n Password : " + user.getPassword();
 
