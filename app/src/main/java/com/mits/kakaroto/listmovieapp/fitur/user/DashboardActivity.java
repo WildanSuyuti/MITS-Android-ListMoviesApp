@@ -47,9 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
-
     public void subMitShowMovie(View view) {
         startActivity(new Intent(this, MovieActivity.class));
     }
-
 }

@@ -24,7 +24,7 @@ public class MovieActivity extends AppCompatActivity {
     public static final int RESULT_ADD = 2;
     public static final int RESULT_UPDATE = 3;
 
-//    private int pos;
+    private int pos;
     private long id;
 
     @Override
@@ -57,7 +57,7 @@ public class MovieActivity extends AppCompatActivity {
 
                         intent.putExtra("id_movie", movie.getId());
                         intent.putExtra("movie", movie);
-  //                      pos = position;
+                        pos = position;
                         startActivityForResult(intent, RESULT_UPDATE);
                     }
 
@@ -105,7 +105,7 @@ public class MovieActivity extends AppCompatActivity {
             Movie movie = data.getParcelableExtra("data_update");
             Movie.updateMovie(id, movie);
             Log.d("id : " + movie.getId(), " image : " + movie.getImageAddrees());
-            //adapter.update(pos, movie);
+            adapter.update(pos, movie);
             adapter.notifyDataSetChanged();
             recyclerView.scrollToPosition(0);
         }
