@@ -140,10 +140,9 @@ public class User extends Model implements Parcelable {
     }
 
     public static boolean checkUser(String email, String password) {
-
         User user = new Select()
                 .from(User.class)
-                .where("Email like '"+ email+"' AND Password like '"+password+"'")
+                .where("Email = '"+ email+"' AND Password = '"+password+"'")
                 .executeSingle();
         if (user != null) return true; else return false;
     }
