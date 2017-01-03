@@ -140,15 +140,19 @@ public class User extends Model implements Parcelable {
     }
 
     public static boolean checkUser(String email, String password) {
+        boolean login = false;
         List<User> user = new Select()
                 .from(User.class)
                 .where("Email = ?", email)
                 .where("Password = ?", password)
                 .execute();
-        if (user != null) {
-            return true;
-        } else
-            return false;
+        for (int i = 0; i < user.size(); i++) {
+            if (user.get(i).getEmail().equals(email) && user.get(i).getPassword().equals(password)) {
+                login = true;
+            }else login = false;
+        }
+
+        return login;
     }
 
     public static List<User> getLogin(String email, String password) {
