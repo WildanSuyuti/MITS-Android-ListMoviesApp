@@ -3,6 +3,7 @@ package com.mits.kakaroto.listmovieapp.fitur.movie;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,8 +21,8 @@ public class FormMovieActivity extends AppCompatActivity {
     private EditText etTitle, etGenre, etYear, etCountry, etDuration;
     private ImageView imgFormFilm;
     private Movie movie = null;
-    private int id;
     private String path;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +39,12 @@ public class FormMovieActivity extends AppCompatActivity {
 
         if (movie != null) {
             getSupportActionBar().setTitle("Update Data");
-            id = movie.getId();
             etTitle.setText(movie.getTitle());
             etGenre.setText(movie.getGenre());
             etYear.setText(movie.getYear());
             etCountry.setText(movie.getCountry());
             etDuration.setText(movie.getDuration());
+            path = movie.getImageAddrees();
             Glide.with(FormMovieActivity.this).load(movie.getImageAddrees()).into(imgFormFilm);
         } else getSupportActionBar().setTitle("Add Data");
     }
@@ -99,14 +100,18 @@ public class FormMovieActivity extends AppCompatActivity {
 
         Intent returnIntent = new Intent();
         if (movie != null) {
-            returnIntent.putExtra("data_update", new Movie(id, title, genre, year, country, duration, path));
+
+            Movie data = new Movie(title, genre, year, country, duration, path);
+            returnIntent.putExtra("data_update", data);
+            //String id = getIntent().getStringExtra("id_movie");
+            //Movie.updateMovie((Long) data.getId(), data);
+
             setResult(MovieActivity.RESULT_UPDATE, returnIntent);
         } else {
             returnIntent.putExtra("data_add", new Movie(title, genre, year, country, duration, path));
             setResult(MovieActivity.RESULT_ADD, returnIntent);
         }
         finish();
-
     }
 
     public void submitCancel(View view) {

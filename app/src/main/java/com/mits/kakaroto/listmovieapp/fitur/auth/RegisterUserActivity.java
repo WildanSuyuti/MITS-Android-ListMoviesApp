@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.fitur.user.DashboardActivity;
 import com.mits.kakaroto.listmovieapp.model.User;
 import com.mits.kakaroto.listmovieapp.utility.SessionManager;
@@ -18,7 +17,6 @@ public class RegisterUserActivity extends AppCompatActivity {
     private EditText etName, etEmail, etAddress, etPhone, etGender, etPassword;
     public static final String TAG = "TagMainActivity";
     private SessionManager sessionManager;
-    private DatabaseHandler tblUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +24,6 @@ public class RegisterUserActivity extends AppCompatActivity {
         sessionManager = SessionManager.getInstance();
         setContentView(R.layout.activity_register_user);
         Log.d(TAG, "onCreate is called");
-
-        tblUser = DatabaseHandler.getInstance();
 
         etName = (EditText) findViewById(R.id.et_name);
         etEmail = (EditText) findViewById(R.id.et_email);
@@ -73,7 +69,10 @@ public class RegisterUserActivity extends AppCompatActivity {
 
             return;
         }
-        tblUser.addUser(new User(name, email, address, phone, gender, pass));
+
+        User user = new User(name, email, address, phone, gender, pass);
+        user.save();
+
         sessionManager.setLogin(email, pass);
 
         Intent intent = new Intent(this, DashboardActivity.class);

@@ -2,44 +2,53 @@ package com.mits.kakaroto.listmovieapp.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.IdRes;
+import android.util.Log;
+
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+import com.activeandroid.query.Update;
+
+import java.util.List;
 
 /**
  * Created by kakaroto on 12/21/16.
  */
+@Table(name = "Movie")
+public class Movie extends Model implements Parcelable {
 
-public class Movie implements Parcelable {
-    private String title,genre,year,country,duration, imageAddrees;
-    private int id;
+    @Column(name = "Title")
+    private String title;
 
+    @Column(name = "Genre")
+    private String genre;
 
-    public Movie(String title, String genre, String year, String country, String duration, String imageAddres) {
-        this.title = title;
-        this.genre = genre;
-        this.year = year;
-        this.country = country;
-        this.duration = duration;
-        this.imageAddrees = imageAddres;
+    @Column(name = "Year")
+    private String year;
+
+    @Column(name = "Country")
+    private String country;
+
+    @Column(name = "Duration")
+    private String duration;
+
+    @Column(name = "ImageAddress")
+    private String imageAddrees;
+
+    public Movie() {
+        super();
     }
 
-    public Movie(int id, String title, String genre, String year, String country, String duration, String imageAddrees) {
+    public Movie(String title, String genre, String year, String country, String duration, String imageAddrees) {
+
         this.title = title;
         this.genre = genre;
         this.year = year;
         this.country = country;
         this.duration = duration;
         this.imageAddrees = imageAddrees;
-        this.id = id;
-    }
-
-    public Movie() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -104,7 +113,6 @@ public class Movie implements Parcelable {
         dest.writeString(this.country);
         dest.writeString(this.duration);
         dest.writeString(this.imageAddrees);
-        dest.writeInt(this.id);
     }
 
     protected Movie(Parcel in) {
@@ -114,10 +122,9 @@ public class Movie implements Parcelable {
         this.country = in.readString();
         this.duration = in.readString();
         this.imageAddrees = in.readString();
-        this.id = in.readInt();
     }
 
-    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);
@@ -128,4 +135,19 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
+
+    public static List<Movie> getAll() {
+        return new Select().from(Movie.class)
+                .orderBy("Id DESC")
+                .execute();
+    }
+
+    public static void updateMovie(long id, Movie movie) {
+        new Update(Movie.class)
+                .set("title = ?, genre = ?, year = ?, country = ?, duration = ?, imageaddress = ?",
+                        movie.getTitle(), movie.getGenre(), movie.getYear(), movie.getCountry(),
+                        movie.getDuration(), movie.getImageAddrees())
+                .where("Id = ? ", id)
+                .execute();
+    }
 }

@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 
-import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.R;
 import com.mits.kakaroto.listmovieapp.model.Movie;
 import com.mits.kakaroto.listmovieapp.utility.recycler.RecyclerTouchListener;
@@ -23,28 +23,23 @@ public class MovieActivity extends AppCompatActivity {
     private Intent intent;
     public static final int RESULT_ADD = 2;
     public static final int RESULT_UPDATE = 3;
-    private DatabaseHandler tblMovie;
+
     private int pos;
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tblMovie = DatabaseHandler.getInstance();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         initRecyclerView();
     }
 
-    public void initRecyclerView() {
-        List<Movie> list = tblMovie.getAllMovies();
-        adapter = new MovieAdapter(MovieActivity.this, list);
 
+    public void initRecyclerView() {
+        List<Movie> list = Movie.getAll();
+        adapter = new MovieAdapter(MovieActivity.this, list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new SpacesItemDecoration(this, R.dimen.space_5));
@@ -55,6 +50,12 @@ public class MovieActivity extends AppCompatActivity {
                         intent = new Intent(MovieActivity.this, FormMovieActivity.class);
                         Movie movie = adapter.getItem(position);
 
+                        if (movie.getId() == null)
+                            id = 0;
+                        else
+                            id = movie.getId();
+
+                        intent.putExtra("id_movie", movie.getId());
                         intent.putExtra("movie", movie);
                         pos = position;
                         startActivityForResult(intent, RESULT_UPDATE);
@@ -68,7 +69,6 @@ public class MovieActivity extends AppCompatActivity {
 
         ItemTouchHelper touchHelper = new ItemTouchHelper(simpleCallback);
         touchHelper.attachToRecyclerView(recyclerView);
-
     }
 
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0,
@@ -82,7 +82,8 @@ public class MovieActivity extends AppCompatActivity {
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
-            tblMovie.deleteMovieById(adapter.getItem(position).getId());
+            Movie movie = adapter.getItem(position);
+            movie.delete();
             adapter.remove(position);
 
         }
@@ -97,14 +98,13 @@ public class MovieActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_ADD) {
             Movie movie = data.getParcelableExtra("data_add");
-            tblMovie.addMovies(movie);
+            movie.save();
             adapter.insert(movie);
             recyclerView.scrollToPosition(0);
         } else if (resultCode == RESULT_UPDATE) {
             Movie movie = data.getParcelableExtra("data_update");
-            tblMovie.updateMovie(new Movie(movie.getId(), movie.getTitle(), movie.getGenre(),
-                    movie.getYear(), movie.getCountry(), movie.getDuration(),
-                    movie.getImageAddrees()));
+            Movie.updateMovie(id, movie);
+            Log.d("id : " + movie.getId(), " image : " + movie.getImageAddrees());
             adapter.update(pos, movie);
             recyclerView.scrollToPosition(0);
         }

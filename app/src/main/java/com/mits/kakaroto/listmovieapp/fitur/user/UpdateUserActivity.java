@@ -6,19 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.model.User;
 
 public class UpdateUserActivity extends AppCompatActivity {
     private EditText etUpdateName, etUpdateEmail, etUpdateAddress, etUpdatePhone, etUpdateGender, etUpdatePass;
-    private DatabaseHandler tblUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
 
-        tblUser = DatabaseHandler.getInstance();
 
         etUpdateName = (EditText) findViewById(R.id.et_updateName);
         etUpdateEmail = (EditText) findViewById(R.id.et_updateEmail);
@@ -46,8 +43,9 @@ public class UpdateUserActivity extends AppCompatActivity {
         String updateGender = etUpdateGender.getText().toString();
         String updatePass = etUpdatePass.getText().toString();
 
-        tblUser.updateUser(new User(updateName, updateEmail, updateAddress, updatePhone,
-                updateGender, updatePass));
+//        tblUser.updateUser(new User(updateName, updateEmail, updateAddress, updatePhone,
+//                updateGender, updatePass));
+
         finish();
     }
 

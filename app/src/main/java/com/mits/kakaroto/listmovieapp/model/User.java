@@ -1,15 +1,45 @@
 package com.mits.kakaroto.listmovieapp.model;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
+import com.activeandroid.util.SQLiteUtils;
+
+import java.util.List;
 
 /**
  * Created by sunari on 29/12/16.
  */
 
-public class User implements Parcelable {
-    private int id;
-    private String name, email, address, phone, gender, password;
+@Table(name = "User")
+public class User extends Model implements Parcelable {
+
+    @Column(name = "Name")
+    private String name;
+
+    @Column(name = "Email")
+    private String email;
+
+    @Column(name = "Address")
+    private String address;
+
+    @Column(name = "Phone")
+    private String phone;
+
+    @Column(name = "Gender")
+    private String gender;
+
+    @Column(name = "Password")
+    private String password;
+
+    public User() {
+    }
 
     public User(String name, String email, String address, String phone, String gender, String password) {
         this.name = name;
@@ -18,27 +48,6 @@ public class User implements Parcelable {
         this.phone = phone;
         this.gender = gender;
         this.password = password;
-    }
-
-    public User(int id, String name, String email, String address, String phone, String gender, String password) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        this.gender = gender;
-        this.password = password;
-    }
-
-    public User() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -89,6 +98,7 @@ public class User implements Parcelable {
         this.password = password;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -96,7 +106,6 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(this.id);
         dest.writeString(this.name);
         dest.writeString(this.email);
         dest.writeString(this.address);
@@ -106,7 +115,6 @@ public class User implements Parcelable {
     }
 
     protected User(Parcel in) {
-        this.id = in.readInt();
         this.name = in.readString();
         this.email = in.readString();
         this.address = in.readString();
@@ -115,7 +123,7 @@ public class User implements Parcelable {
         this.password = in.readString();
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
         @Override
         public User createFromParcel(Parcel source) {
             return new User(source);
@@ -126,4 +134,28 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+    public static List<User> getAll() {
+        return new Select().from(User.class).execute();
+    }
+
+    public static boolean checkUser(String email, String password) {
+        List<User> user = new Select()
+                .from(User.class)
+                .where("Email = ?", email)
+                .where("Password = ?", password)
+                .execute();
+        if (user != null) {
+            return true;
+        } else
+            return false;
+    }
+
+    public static User getLogin(String email, String password) {
+      List<User> userList = new Select().from(User.class)
+                .where("email = ? ", email)
+                .where("password = ? ", password)
+                .execute();
+        return userList.get(0);
+    }
 }

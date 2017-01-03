@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mits.kakaroto.listmovieapp">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.MyApplication"
@@ -12,10 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="movies.db" />
+
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="4" />
+
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.mits.kakaroto.listmovieapp.model.Movie,
+                           com.mits.kakaroto.listmovieapp.model.User
+            "/>
+
         <activity android:name=".fitur.movie.MovieActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".fitur.user.DashboardActivity"></meta-data>
+                android:value=".fitur.user.DashboardActivity">
+            </meta-data>
         </activity>
 
         <activity
@@ -26,7 +42,6 @@
                 android:value=".fitur.movie.MovieActivity">
             </meta-data>
         </activity>
-
 
         <activity android:name=".fitur.auth.LoginActivity">
         </activity>
@@ -54,14 +69,16 @@
 
         <activity
             android:name=".fitur.user.DashboardActivity"
-            android:label="Dashbord"></activity>
+            android:label="Dashbord">
+        </activity>
 
         <activity
             android:name=".fitur.user.UpdateUserActivity"
             android:label="Update User">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".fitur.user.DashboardActivity"></meta-data>
+                android:value=".fitur.user.DashboardActivity">
+            </meta-data>
         </activity>
 
     </application>

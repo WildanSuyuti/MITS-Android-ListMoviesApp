@@ -3,21 +3,22 @@ package com.mits.kakaroto.listmovieapp.fitur.auth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mits.kakaroto.listmovieapp.R;
-import com.mits.kakaroto.listmovieapp.database.DatabaseHandler;
 import com.mits.kakaroto.listmovieapp.fitur.user.DashboardActivity;
 import com.mits.kakaroto.listmovieapp.model.User;
 import com.mits.kakaroto.listmovieapp.utility.SessionManager;
 
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText etEmail, etPass;
     private SessionManager sessionManager;
-    private DatabaseHandler tblUser;
-    private User user = new User();
+
     public static final int REQUEST_REGISTER = 1;
 
     @Override
@@ -27,10 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         if (sessionManager.isLoggedin()) openDashboard();
 
         setContentView(R.layout.activity_login);
-        tblUser = new DatabaseHandler(this);
         etEmail = (EditText) findViewById(R.id.et_emailLogin);
         etPass = (EditText) findViewById(R.id.et_passwordLogin);
-
     }
 
     public void submitLogin(View view) {
@@ -65,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        if (tblUser.checkUser(email, password)) {
+        User user = new User();
+        if (user.checkUser(email, password)) {
             sessionManager.setLogin(email, password);
             openDashboard();
         } else Toast.makeText(this, "Email or password is invalid", Toast.LENGTH_SHORT).show();
